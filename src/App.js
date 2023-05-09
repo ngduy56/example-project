@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addJob, selectJob, selectJobs, setJob } from "./slices/TodoSlice";
-import { fetchPostThunk } from "./slices/PostSlice";
+// import { fetchPostThunk } from "./slices/PostSlice";
 import { action } from "./store/store";
+import { fetchPostThunk } from "./slices/PostSlice";
 
 function App() {
   const inputRef = useRef();
@@ -20,9 +21,14 @@ function App() {
     dispatch(setJob(""));
     inputRef.current.focus();
   };
-  // useEffect(() => {
-  //   dispatch(fetchPostThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    hello = "hello";
+    var hello;
+    console.log(hello);
+    dispatch(fetchPostThunk()).then((data) => {
+      console.log(data.payload);
+    });
+  }, [dispatch]);
 
   return (
     <div className="App">

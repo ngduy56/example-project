@@ -17,8 +17,6 @@ export function* incrementAsync() {
 }
 // Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
 export function* watchIncrementAsync() {
-  yield take("INCREMENT_ASYNC");
-
   yield takeEvery("INCREMENT_ASYNC", incrementAsync);
 }
 export default watchIncrementAsync;

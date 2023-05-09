@@ -18,18 +18,16 @@ const postSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPostThunk.pending, (state, action) => {
-      state.loading = true;
-    });
-
-    builder.addCase(fetchPostThunk.fulfilled, (state, action) => {
-      state.posts = action.payload;
-    });
-
-    builder.addCase(fetchPostThunk.rejected, (state, action) => {
-      state.loading = false;
-      console.log("has error!");
-    });
+    builder
+      .addCase(fetchPostThunk.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(fetchPostThunk.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+      .addCase(fetchPostThunk.rejected, (state, action) => {
+        state.loading = false;
+      });
   },
 });
 
